@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>FCC Algorithms-Find-the-Symmetric-Difference</title>
+</head>
+<body>
+    <p><em>Here is the Algorithms-Find-the-Symmetric-Difference FreeCodeCamp challenge that you can find <a target="_blank" href="https://learn.freecodecamp.org/coding-interview-prep/algorithms/find-the-symmetric-difference/">here</a></em></p>
+    <br>
+    <p><em>Create a function that takes two or more arrays and returns an array of the symmetric difference (△ or ⊕) of the provided arrays.</em> 💁</p>
+    <p><em>Given two sets (for example set A = {1, 2, 3} and set B = {2, 3, 4}), the mathematical term "symmetric difference" of two sets is the set of elements which are in either of the two sets, but not in both (A △ B = C = {1, 4}). For every additional symmetric difference you take (say on a set D = {2, 3}), you should get the set with elements which are in either of the two the sets but not both (C △ D = {1, 4} △ {2, 3} = {1, 2, 3, 4}). The resulting array must contain only unique values (no duplicates).</em> 💁</p>
+    <br>
+    <p><em>Psst: have a look at the JavaScript Console and enter the following as an exemple to test the function</em> 💁</p>
+    <p><em>sym([1, 2, 3], [5, 2, 1, 4]);</em></p>
+    
+
+    <script>
+        
+      function sym(...args) {
+          function removeDup(arr){
+            arr.map((elem,index) => {
+              if(arr.slice(index+1).includes(elem)){
+                arr.splice(index,1);
+              }
+              })
+              return arr;
+          }
+          
+          args.reduce(function(arr1,arr2){
+            removeDup(arr1);
+            removeDup(arr2);
+            
+            let tempArr = [];
+            
+            arr1.map((elem,index) => {
+              if(!arr2.includes(elem)){
+                tempArr.push(elem);
+              }
+            });
+            
+            arr2.map((elem,index) => {
+              if(!arr1.includes(elem)){
+                tempArr.push(elem);
+              }
+            });
+        
+            arr1 = tempArr;
+            
+            return args = arr1.sort(function(a, b){return a - b});
+          })
+          
+          return args
+        }
+        
+
+    </script>
+</body>
+</html>
